@@ -12,10 +12,12 @@ void mergeSortedLists(vector<int>& a, vector<int>& tmp, int leftPos, int rightPo
 void swap (int *a, int *b);
 void bubbleSort(int *a, int n);
 
-int main() {
+int main(int argc, char* argv[]) {
     // get input: first is random seed, second is vector length
     int seed, length;
-    cin >> seed >> length;
+    seed = atoi(argv[1]);
+    length = atoi(argv[2]);
+    //cin >> seed >> length;
     srand(seed);
 
     vector<int> v(length); // vector to be sorted
