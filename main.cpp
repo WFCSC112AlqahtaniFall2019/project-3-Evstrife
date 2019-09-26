@@ -22,7 +22,7 @@ int main() {
     vector<int> t(length); // temporary workspace
 
     // define an integer pointer dynamically allocate an array of integers
-    /* your code here */
+    int *a = new int[length];
 
     // initialize and print input
     cout << "Unsorted:" << endl;
@@ -33,7 +33,9 @@ int main() {
     cout << endl;
 
     // copy the random list of integers from vector to array
-    /* your code here */
+    for(int i = 0; i < length;i++){
+        a[i] = v.at(i);
+    }
 
     clock_t start_mergeSort = clock();
     // sort vector using mergeSort
@@ -46,11 +48,13 @@ int main() {
     }
 
     // check output, make sure array is sorted after bubbleSort
-    /* your code here */
+    for(int i = 1; i < length; i++) {
+        assert(a[i-1] <= a[i]);
+    }
 
     clock_t start_bubbleSort = clock();
     // sort array using bubbleSort
-    /* your code here */
+    bubbleSort(a,length);
     clock_t end_bubbleSort = clock();
 
 
@@ -63,6 +67,9 @@ int main() {
 
     // print sorted array after bubbleSort
     /* your code here */
+    for (int i = 0; i < v.size(); i++)
+        cout << v.at(i) << " ";
+    cout << endl;
 
     // print elapsed time for mergeSort and bubbleSort
     double elapsed_mergeSort = double(end_mergeSort - start_mergeSort) / CLOCKS_PER_SEC;
@@ -110,10 +117,20 @@ void mergeSort(vector<int>& a, vector<int>& tmp, int left, int right) {
 
 // Swap function
 void swap(int *a, int *b) {
-    /* your code here */
+    int temp = *a;
+    *a = * b;
+    *b = temp;
 }
 
 // BubbleSort function
 void bubbleSort(int *a, int n) {
-    /* your code here */
+    a = new int[n];
+    for(int i = 0; i < n;i++){
+        for(int j = 0 ; j < n - i - 1 ;j++){
+            if(a[j]>a[j+1]){
+                swap(a[j],a[j+1]);
+            }
+        }
+    }
+    delete a;
 }
